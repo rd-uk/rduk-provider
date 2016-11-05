@@ -143,7 +143,7 @@
                 });
             });
 
-            describe('get a instance that doesnt inherit the map base provider', function() {
+            describe('get an instance that doesnt inherit the map base provider', function() {
                 it('should throw a ConfigurationError', function() {
                     expect(function() {
                         map.get('badFake');

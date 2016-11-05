@@ -26,7 +26,7 @@
 
     'use strict';
 
-    var BadFakeMapProvider = function FakeMapProvider(config) {
+    var BadFakeMapProvider = function BadFakeMapProvider(config) {
         BadFakeMapProvider.super_.call(this, config);
     };
 

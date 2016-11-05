@@ -1,0 +1,36 @@
+{
+  "name": "rduk-provider",
+  "version": "0.1.0",
+  "description": "Easily add providers to your Node.js app",
+  "main": "lib/factory.js",
+  "scripts": {
+    "lint": "jshint lib/*.js examples/*.js spec/*.js",
+    "pretest": "npm run lint && cp ./examples/*.yml .",
+    "test": "istanbul cover jasmine",
+    "posttest": "rm ./config*.yml && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rduk/rduk-provider.git"
+  },
+  "keywords": [
+    "provider"
+  ],
+  "author": "Kim UNG",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rduk/rduk-provider/issues"
+  },
+  "homepage": "https://github.com/rduk/rduk-provider#readme",
+  "devDependencies": {
+    "coveralls": "2.11.14",
+    "istanbul": "0.4.5",
+    "jasmine": "2.5.2",
+    "jshint": "2.9.4"
+  },
+  "dependencies": {
+    "lodash": "4.16.4",
+    "rduk-configuration": "^0.1.1",
+    "rduk-errors": "^1.2.1"
+  }
+}

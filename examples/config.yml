@@ -1,0 +1,16 @@
+---
+connections:
+    -
+        name: map
+        token: MY_TOKEN
+map:
+    default: fake
+    providers:
+        -
+            name: fake
+            type: ../examples/fakeMapProvider
+            connection: map
+        -
+            name: badFake
+            type: ../examples/BadFakeMapProvider
+            connection: map

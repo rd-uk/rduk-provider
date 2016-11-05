@@ -32,10 +32,6 @@
 
     require('util').inherits(BadFakeMapProvider, require('../lib/base'));
 
-    BadFakeMapProvider.prototype.geocode = function(address) {
-        return [1, 1];
-    };
-
     module.exports = BadFakeMapProvider;
 
 } (require, module));

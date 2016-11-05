@@ -12,5 +12,5 @@ map:
             connection: map
         -
             name: badFake
-            type: ../examples/BadFakeMapProvider
+            type: ../examples/badFakeMapProvider
             connection: map

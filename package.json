@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rduk/rduk-provider.git"
+    "url": "git+https://github.com/rd-uk/rduk-provider.git"
   },
   "keywords": [
     "provider"
@@ -19,9 +19,9 @@
   "author": "Kim UNG",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rduk/rduk-provider/issues"
+    "url": "https://github.com/rd-uk/rduk-provider/issues"
   },
-  "homepage": "https://github.com/rduk/rduk-provider#readme",
+  "homepage": "https://github.com/rd-uk/rduk-provider#readme",
   "devDependencies": {
     "coveralls": "2.11.14",
     "istanbul": "0.4.5",

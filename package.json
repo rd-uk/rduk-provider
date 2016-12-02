@@ -23,13 +23,13 @@
   },
   "homepage": "https://github.com/rd-uk/rduk-provider#readme",
   "devDependencies": {
-    "coveralls": "2.11.14",
+    "coveralls": "2.11.15",
     "istanbul": "0.4.5",
     "jasmine": "2.5.2",
     "jshint": "2.9.4"
   },
   "dependencies": {
-    "lodash": "4.16.4",
+    "lodash": "4.17.2",
     "rduk-configuration": "^0.1.1",
     "rduk-errors": "^1.2.1"
   }

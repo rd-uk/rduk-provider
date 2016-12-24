@@ -29,7 +29,7 @@
     "jshint": "2.9.4"
   },
   "dependencies": {
-    "lodash": "4.17.2",
+    "lodash": "4.17.3",
     "rduk-configuration": "^0.1.1",
     "rduk-errors": "^1.2.1"
   }

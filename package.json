@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/rd-uk/rduk-provider#readme",
   "devDependencies": {
-    "coveralls": "2.11.15",
+    "coveralls": "2.11.16",
     "istanbul": "0.4.5",
     "jasmine": "2.5.3",
     "jshint": "2.9.4"

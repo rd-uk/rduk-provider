@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "lodash": "4.17.3",
-    "rduk-configuration": "^0.1.1",
+    "rduk-configuration": "^1.0.0",
     "rduk-errors": "^1.2.1"
   }
 }

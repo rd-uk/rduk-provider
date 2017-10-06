@@ -32,10 +32,5 @@
     "lodash": "4.17.3",
     "rduk-configuration": "1.0.2",
     "rduk-errors": "1.2.3"
-  },
-  "rduk": {
-    "config": {
-      "path": "config"
-    }
   }
 }

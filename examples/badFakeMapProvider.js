@@ -1,7 +1,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2016 Kim UNG
+ * Copyright (c) 2016 - 2017 Kim Ung <k.ung@rduk.fr>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +22,12 @@
  * SOFTWARE.
  */
 
-(function(require, module) {
+'use strict';
 
-    'use strict';
+var BadFakeMapProvider = function BadFakeMapProvider(config) {
+    BadFakeMapProvider.super_.call(this, config);
+};
 
-    var BadFakeMapProvider = function BadFakeMapProvider(config) {
-        BadFakeMapProvider.super_.call(this, config);
-    };
+require('util').inherits(BadFakeMapProvider, require('../lib/base'));
 
-    require('util').inherits(BadFakeMapProvider, require('../lib/base'));
-
-    module.exports = BadFakeMapProvider;
-
-} (require, module));
+module.exports = BadFakeMapProvider;

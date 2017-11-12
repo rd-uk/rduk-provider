@@ -1,6 +1,6 @@
 {
   "name": "rduk-provider",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Easily add providers to your Node.js app",
   "main": "lib/factory.js",
   "scripts": {
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "lodash": "4.16.4",
-    "rduk-configuration": "^0.1.1",
-    "rduk-errors": "^1.2.1"
+    "rduk-configuration": "1.1.0",
+    "rduk-errors": "1.2.3"
   }
 }

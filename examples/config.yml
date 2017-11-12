@@ -8,9 +8,9 @@ map:
     providers:
         -
             name: fake
-            type: ../examples/fakeMapProvider
+            type: ~/examples/fakeMapProvider
             connection: map
         -
             name: badFake
-            type: ../examples/badFakeMapProvider
+            type: ~/examples/badFakeMapProvider
             connection: map

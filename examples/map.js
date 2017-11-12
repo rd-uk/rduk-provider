@@ -1,7 +1,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2016 Kim UNG
+ * Copyright (c) 2016 - 2017 Kim Ung <k.ung@rduk.fr>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,8 @@
  * SOFTWARE.
  */
 
-(function(module) {
+'use strict';
 
-    'use strict';
+var map = require('../lib/factory')('map', require('./mapBaseProvider'));
 
-    var map = require('../lib/factory')('map', require('./mapBaseProvider'));
-
-    module.exports = map;
-
-} (module));
+module.exports = map;

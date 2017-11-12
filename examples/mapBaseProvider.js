@@ -1,7 +1,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2016 Kim UNG
+ * Copyright (c) 2016 - 2017 Kim Ung <k.ung@rduk.fr>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,34 +22,30 @@
  * SOFTWARE.
  */
 
-(function(require, module) {
+'use strict';
 
-    'use strict';
+var base = require('../lib/base');
+var configuration = require('rduk-configuration');
+var errors = require('rduk-errors');
 
-    var base = require('../lib/base');
-    var configuration = require('rduk-configuration');
-    var errors = require('rduk-errors');
+var MapBaseProvider = function MapBaseProvider(config) {
+    MapBaseProvider.super_.call(this, config);
 
-    var MapBaseProvider = function MapBaseProvider(config) {
-        MapBaseProvider.super_.call(this, config);
+    this.initialize();
+};
 
-        this.initialize();
-    };
+require('util').inherits(MapBaseProvider, base);
 
-    require('util').inherits(MapBaseProvider, base);
+MapBaseProvider.prototype.initialize = function() {
+    if (!this.config.hasOwnProperty('connection')) {
+        errors.throwConfigurationError('connection property not found.');
+    }
 
-    MapBaseProvider.prototype.initialize = function() {
-        if (!this.config.hasOwnProperty('connection')) {
-            errors.throwConfigurationError('connection property not found.');
-        }
+    this.token = configuration.load().connections.get(this.config.connection).token;
+};
 
-        this.token = configuration.load().connections.get(this.config.connection).token;
-    };
+MapBaseProvider.prototype.geocode = function(address) {
+    errors.throwNotImplementedError('geocode');
+};
 
-    MapBaseProvider.prototype.geocode = function(address) {
-        errors.throwNotImplementedError('geocode');
-    };
-
-    module.exports = MapBaseProvider;
-
-} (require, module));
+module.exports = MapBaseProvider;

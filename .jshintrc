@@ -1,0 +1,5 @@
+{
+  "strict": "global",
+  "quotmark": true,
+  "node": true
+}

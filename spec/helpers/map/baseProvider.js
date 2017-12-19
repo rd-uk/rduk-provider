@@ -24,20 +24,26 @@
 
 'use strict';
 
+var base = require('../../../lib/base');
+var configuration = require('@rduk/configuration');
 var errors = require('rduk-errors');
 
-var BaseProvider = function(config, section) {
-    if (!config || !config.name) {
-        errors.throwArgumentError('config', config);
+var MapBaseProvider = function MapBaseProvider(config) {
+    MapBaseProvider.super_.call(this, config);
+};
+
+require('util').inherits(MapBaseProvider, base);
+
+MapBaseProvider.prototype.initialize = function() {
+    if (!this.config.hasOwnProperty('connection')) {
+        errors.throwConfigurationError('connection property not found.');
     }
 
-    this.config = config;
-    this.name = config.name;
-    this.section = section;
+    this.token = configuration.load().connections.get(this.config.connection).token;
 };
 
-BaseProvider.prototype.initialize = function() {
-    errors.throwNotImplementedError('initialize')   ;
+MapBaseProvider.prototype.geocode = function(address) {
+    errors.throwNotImplementedError('geocode');
 };
 
-module.exports = BaseProvider;
+module.exports = MapBaseProvider;

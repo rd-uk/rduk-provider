@@ -24,20 +24,6 @@
 
 'use strict';
 
-var errors = require('rduk-errors');
+var map = require('../../../lib/factory')('map', require('./baseProvider'));
 
-var BaseProvider = function(config, section) {
-    if (!config || !config.name) {
-        errors.throwArgumentError('config', config);
-    }
-
-    this.config = config;
-    this.name = config.name;
-    this.section = section;
-};
-
-BaseProvider.prototype.initialize = function() {
-    errors.throwNotImplementedError('initialize')   ;
-};
-
-module.exports = BaseProvider;
+module.exports = map;

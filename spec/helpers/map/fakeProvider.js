@@ -1,8 +1,8 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2016 - 2017 Kim Ung <k.ung@rduk.fr>
- * 
+ * Copyright (c) 2016 - 2017 RDUK <tech@rduk.fr>
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,28 +24,14 @@
 
 'use strict';
 
-var base = require('../lib/base');
-var configuration = require('rduk-configuration');
-var errors = require('rduk-errors');
-
-var MapBaseProvider = function MapBaseProvider(config) {
-    MapBaseProvider.super_.call(this, config);
-
-    this.initialize();
+var FakeMapProvider = function FakeMapProvider(config) {
+    FakeMapProvider.super_.call(this, config);
 };
 
-require('util').inherits(MapBaseProvider, base);
+require('util').inherits(FakeMapProvider, require('./baseProvider'));
 
-MapBaseProvider.prototype.initialize = function() {
-    if (!this.config.hasOwnProperty('connection')) {
-        errors.throwConfigurationError('connection property not found.');
-    }
-
-    this.token = configuration.load().connections.get(this.config.connection).token;
+FakeMapProvider.prototype.geocode = function(address) {
+    return [1, 1];
 };
 
-MapBaseProvider.prototype.geocode = function(address) {
-    errors.throwNotImplementedError('geocode');
-};
-
-module.exports = MapBaseProvider;
+module.exports = FakeMapProvider;

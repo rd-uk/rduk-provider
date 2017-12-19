@@ -1,7 +1,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2016 - 2017 Kim Ung <k.ung@rduk.fr>
+ * Copyright (c) 2016 - 2017 RDUK <tech@rduk.fr>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -130,7 +130,7 @@
         });
 
         describe('map:', function() {
-            var map = require('../examples/map');
+            var map = require('./helpers/map');
 
             describe('.getInstance', function() {
                 it('should return the default provider', function() {
@@ -152,12 +152,13 @@
             });
 
             describe('base class', function() {
-                var Provider = require('../examples/mapBaseProvider');
+                var Provider = require('./helpers/map/baseProvider');
                 
                 describe('instantion without connection in config', function() {
-                    it('should throw a ConfigurationError', function() {
+                    it('should throw a ConfigurationError during initialization', function() {
                         expect(function() {
-                            new Provider({name: 'test'});
+                            var provider = new Provider({name: 'test'});
+                            provider.initialize();
                         }).toThrowError(errors.ConfigurationError);
                     });
                 });
@@ -171,6 +172,14 @@
                         }).toThrowError(errors.NotImplementedError);
                     });
                 });
+            });
+        });
+
+        describe('default configuration provider loading', function() {
+            it('should succeed', function() {
+                var logger = require('./helpers/logger').getInstance();
+                expect(logger instanceof require('./helpers/logger/defaultProvider')).toBe(true);
+                expect(logger.log('test')).toBe('test');
             });
         });
 

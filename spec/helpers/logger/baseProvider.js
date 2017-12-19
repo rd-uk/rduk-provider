@@ -24,20 +24,19 @@
 
 'use strict';
 
-var errors = require('rduk-errors');
+var base = require('../../../lib/base');
+var error = require('rduk-errors');
 
-var BaseProvider = function(config, section) {
-    if (!config || !config.name) {
-        errors.throwArgumentError('config', config);
-    }
-
-    this.config = config;
-    this.name = config.name;
-    this.section = section;
+var LoggerBaseProvider = function LoggerBaseProvider(config) {
+    LoggerBaseProvider.super_.call(this, config);
 };
 
-BaseProvider.prototype.initialize = function() {
-    errors.throwNotImplementedError('initialize')   ;
+require('util').inherits(LoggerBaseProvider, base);
+
+LoggerBaseProvider.prototype.initialize = function() {};
+
+LoggerBaseProvider.prototype.log = function(msg) {
+    errors.throwNotImplementedError('log');
 };
 
-module.exports = BaseProvider;
+module.exports = LoggerBaseProvider;

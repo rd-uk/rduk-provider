@@ -155,9 +155,10 @@
                 var Provider = require('./helpers/map/baseProvider');
                 
                 describe('instantion without connection in config', function() {
-                    it('should throw a ConfigurationError', function() {
+                    it('should throw a ConfigurationError during initialization', function() {
                         expect(function() {
-                            new Provider({name: 'test'});
+                            var provider = new Provider({name: 'test'});
+                            provider.initialize();
                         }).toThrowError(errors.ConfigurationError);
                     });
                 });

@@ -25,7 +25,7 @@
 'use strict';
 
 var base = require('../../../lib/base');
-var error = require('rduk-errors');
+var errors = require('@rduk/errors');
 
 var LoggerBaseProvider = function LoggerBaseProvider(config) {
     LoggerBaseProvider.super_.call(this, config);

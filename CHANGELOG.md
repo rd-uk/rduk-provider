@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - update README
 - change `rduk-errors` by `@rduk/errors` latest version (1.3.0)
-- update `@rduk/configuration` to latest version (2.0.2) 
+- update `@rduk/configuration` to latest version (2.0.2)
+- update `lodash` to latest version (4.17.4) 
 - update `coveralls` to latest version (3.0.0)
 - update `jasmine` to latest version (2.8.0)
 - fix test helper

@@ -26,7 +26,7 @@
 
     'use strict';
 
-    var errors = require('rduk-errors');
+    var errors = require('@rduk/errors');
 
     describe('provider', function() {
 

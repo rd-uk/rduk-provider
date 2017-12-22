@@ -26,7 +26,7 @@
 
 var base = require('../../../lib/base');
 var configuration = require('@rduk/configuration');
-var errors = require('rduk-errors');
+var errors = require('@rduk/errors');
 
 var MapBaseProvider = function MapBaseProvider(config) {
     MapBaseProvider.super_.call(this, config);

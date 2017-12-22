@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/rd-uk/rduk-provider.svg?branch=master)](https://travis-ci.org/rd-uk/rduk-provider)
 [![Coverage Status](https://coveralls.io/repos/github/rd-uk/rduk-provider/badge.svg?branch=master)](https://coveralls.io/github/rd-uk/rduk-provider?branch=master)
+[![bitHound Overall Score](https://www.bithound.io/github/rd-uk/rduk-provider/badges/score.svg)](https://www.bithound.io/github/rd-uk/rduk-provider)
 
 Easily add providers to your Node.js app
 
@@ -132,4 +133,4 @@ map.getInstance().geocode('my address') // get instance according to the configu
 
 ## License and copyright
 
-See [LICENSE](./LICENSE)
+See [LICENSE](./LICENSE) file

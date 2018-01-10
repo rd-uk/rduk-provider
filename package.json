@@ -1,7 +1,10 @@
 {
   "name": "@rduk/provider",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "Easily add providers to your Node.js app",
+  "engines": {
+    "node": ">=6.4.0"
+  },
   "main": "lib/factory.js",
   "scripts": {
     "pretest": "cp ./spec/resources/config*.yml .",

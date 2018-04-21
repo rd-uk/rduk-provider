@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
-var map = require('../../../lib/factory')('map', require('./baseProvider'));
+var map = require('../../../lib/factory')('map', require('./baseProvider'))
 
-module.exports = map;
+module.exports = map

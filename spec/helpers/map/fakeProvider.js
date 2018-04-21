@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
-var FakeMapProvider = function FakeMapProvider(config) {
-    FakeMapProvider.super_.call(this, config);
-};
+const Base = require('./baseProvider')
 
-require('util').inherits(FakeMapProvider, require('./baseProvider'));
+class FakeMapProvider extends Base {
+  geocode (address) {
+    return [1, 1]
+  }
+}
 
-FakeMapProvider.prototype.geocode = function(address) {
-    return [1, 1];
-};
-
-module.exports = FakeMapProvider;
+module.exports = FakeMapProvider

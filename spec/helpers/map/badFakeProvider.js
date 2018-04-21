@@ -22,12 +22,10 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
-var BadFakeMapProvider = function BadFakeMapProvider(config) {
-    BadFakeMapProvider.super_.call(this, config);
-};
+const Base = require('../../../lib/base')
 
-require('util').inherits(BadFakeMapProvider, require('../../../lib/base'));
+class BadFakeMapProvider extends Base {}
 
-module.exports = BadFakeMapProvider;
+module.exports = BadFakeMapProvider

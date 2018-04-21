@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
-var DefaultLoggerProvider = function DefaultLoggerProvider(config) {
-    DefaultLoggerProvider.super_.call(this, config);
-};
+const Base = require('./baseProvider')
 
-require('util').inherits(DefaultLoggerProvider, require('./baseProvider'));
+class DefaultLoggerProvider extends Base {
+  log (msg) {
+    return msg
+  }
+}
 
-DefaultLoggerProvider.prototype.log = function(msg) {
-    return msg;
-};
-
-module.exports = DefaultLoggerProvider;
+module.exports = DefaultLoggerProvider

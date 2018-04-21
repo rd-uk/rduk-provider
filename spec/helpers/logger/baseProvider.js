@@ -22,21 +22,16 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
-var base = require('../../../lib/base');
-var errors = require('@rduk/errors');
+const Base = require('../../../lib/base')
+const errors = require('@rduk/errors')
 
-var LoggerBaseProvider = function LoggerBaseProvider(config) {
-    LoggerBaseProvider.super_.call(this, config);
-};
+class LoggerBaseProvider extends Base {
+  initialize () {}
+  log (msg) {
+    errors.throwNotImplementedError('log')
+  }
+}
 
-require('util').inherits(LoggerBaseProvider, base);
-
-LoggerBaseProvider.prototype.initialize = function() {};
-
-LoggerBaseProvider.prototype.log = function(msg) {
-    errors.throwNotImplementedError('log');
-};
-
-module.exports = LoggerBaseProvider;
+module.exports = LoggerBaseProvider

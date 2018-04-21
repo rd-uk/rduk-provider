@@ -22,167 +22,163 @@
  * SOFTWARE.
  */
 
-(function(require, describe, it, expect) {
+/* eslint-env jasmine */
 
-    'use strict';
+'use strict'
 
-    var errors = require('@rduk/errors');
+var errors = require('@rduk/errors')
 
-    describe('provider', function() {
+describe('provider', function () {
+  describe('base', function () {
+    var BaseProvider = require('../lib/base')
 
-        describe('base', function() {
-            var BaseProvider = require('../lib/base');
+    describe('instantiate without valid config', function () {
+      it('should throw an ArgumentError', function () {
+        expect(function () {
+          new BaseProvider() // eslint-disable-line
+        }).toThrowError(errors.ArgumentError)
 
-            describe('instantiate without valid config', function() {
-                it('should throw an ArgumentError', function() {
-                    expect(function() {
-                        new BaseProvider();
-                    }).toThrowError(errors.ArgumentError);
+        expect(function () {
+          new BaseProvider({}) // eslint-disable-line
+        }).toThrowError(errors.ArgumentError)
+      })
+    })
 
-                    expect(function() {
-                        new BaseProvider({});
-                    }).toThrowError(errors.ArgumentError);
-                });
-            });
+    describe('.initialize', function () {
+      var base = new BaseProvider({name: 'base'})
 
-            describe('.initialize', function() {
-                var base = new BaseProvider({name: 'base'});
+      it('should throw a NotImplementedError', function () {
+        expect(function () {
+          base.initialize()
+        }).toThrowError(errors.NotImplementedError)
+      })
+    })
+  })
 
-                it('should throw a NotImplementedError', function() {
-                    expect(function() {
-                        base.initialize();
-                    }).toThrowError(errors.NotImplementedError);
-                });
-            });
-        });
+  describe('section', function () {
+    var ProviderSection = require('../lib/section')
 
-        describe('section', function() {
-            var ProviderSection = require('../lib/section');
+    describe('instantiate without section arg', function () {
+      it('should throw an ArgumentNullError', function () {
+        expect(function () {
+          new ProviderSection() // eslint-disable-line
+        }).toThrowError(errors.ArgumentNullError)
+      })
+    })
 
-            describe('instantiate without section arg', function() {
-                it ('should throw an ArgumentNullError', function() {
-                    expect(function() {
-                        new ProviderSection();
-                    }).toThrowError(errors.ArgumentNullError);
-                });
-            });
+    describe('instantiate with an invalid section arg', function () {
+      it('should throw an ArgumentNullError', function () {
+        // without default property
+        expect(function () {
+          new ProviderSection({}) // eslint-disable-line
+        }).toThrowError(errors.ConfigurationError)
 
-            describe('instantiate with an invalid section arg', function() {
-                it ('should throw an ArgumentNullError', function() {
-                    //without default property
-                    expect(function() {
-                        new ProviderSection({});
-                    }).toThrowError(errors.ConfigurationError);
+        // withour providers property
+        expect(function () {
+          new ProviderSection({default: 'fake'}) // eslint-disable-line
+        }).toThrowError(errors.ConfigurationError)
+      })
+    })
 
-                    //withour providers property
-                    expect(function() {
-                        new ProviderSection({default: 'fake'});
-                    }).toThrowError(errors.ConfigurationError);
-                });
-            });
+    describe('.get with unknown name', function () {
+      it('should throw a ConfigurationError', function () {
+        var section = new ProviderSection({
+          default: 'name',
+          providers: []
+        })
 
-            describe('.get with unknown name', function() {
-                it('should throw a ConfigurationError', function() {
-                    var section = new ProviderSection({
-                        default: 'name',
-                        providers: []
-                    });
+        expect(function () {
+          section.get('unknown')
+        }).toThrowError(errors.ConfigurationError)
+      })
+    })
+  })
 
-                    expect(function() {
-                        section.get('unknown');
-                    }).toThrowError(errors.ConfigurationError);
-                });
-            });
-        });
+  describe('factory:', function () {
+    var factory = require('../lib/factory')
 
-        describe('factory:', function() {
-            var factory = require('../lib/factory');
+    describe('create a provider', function () {
+      describe('with an invalid name', function () {
+        it('should throw an ArgumentError', function () {
+          expect(function () {
+            factory()
+          }).toThrowError(errors.ArgumentError)
 
-            describe('create a provider', function() {
-                describe('with an invalid name', function() {
-                    it('should throw an ArgumentError', function() {
-                        expect(function() {
-                            factory();
-                        }).toThrowError(errors.ArgumentError);
+          expect(function () {
+            factory({})
+          }).toThrowError(errors.ArgumentError)
 
-                        expect(function() {
-                            factory({});
-                        }).toThrowError(errors.ArgumentError);
+          expect(function () {
+            factory('')
+          }).toThrowError(errors.ArgumentError)
+        })
+      })
 
-                        expect(function() {
-                            factory('');
-                        }).toThrowError(errors.ArgumentError);
-                    });
-                });
+      describe('with an invalid base', function () {
+        it('should throw an ArgumentError', function () {
+          expect(function () {
+            factory('test')
+          }).toThrowError(errors.ArgumentError)
 
-                describe('with an invalid base', function() {
-                    it('should throw an ArgumentError', function() {
-                        expect(function() {
-                            factory('test');
-                        }).toThrowError(errors.ArgumentError);
+          expect(function () {
+            factory('test', {})
+          }).toThrowError(errors.ArgumentError)
+        })
+      })
+    })
+  })
 
-                        expect(function() {
-                            factory('test', {});
-                        }).toThrowError(errors.ArgumentError);
-                    });
-                });
-            });
-        });
+  describe('map:', function () {
+    var map = require('./helpers/map')
 
-        describe('map:', function() {
-            var map = require('./helpers/map');
+    describe('.getInstance', function () {
+      it('should return the default provider', function () {
+        expect(map.getInstance()).toBeDefined()
+        expect(map.getInstance().name).toBe(map.get('fake').name)
 
-            describe('.getInstance', function() {
-                it('should return the default provider', function() {
-                    expect(map.getInstance()).toBeDefined();
-                    expect(map.getInstance().name).toBe(map.get('fake').name);
+        var coord = map.getInstance().geocode('test')
 
-                    var coord = map.getInstance().geocode('test');
+        expect(Array.isArray(coord)).toBe(true)
+      })
+    })
 
-                    expect(Array.isArray(coord)).toBe(true);
-                });
-            });
+    describe('get an instance that doesnt inherit the map base provider', function () {
+      it('should throw a ConfigurationError', function () {
+        expect(function () {
+          map.get('badFake')
+        }).toThrowError(errors.ConfigurationError)
+      })
+    })
 
-            describe('get an instance that doesnt inherit the map base provider', function() {
-                it('should throw a ConfigurationError', function() {
-                    expect(function() {
-                        map.get('badFake');
-                    }).toThrowError(errors.ConfigurationError);
-                });
-            });
+    describe('base class', function () {
+      var Provider = require('./helpers/map/baseProvider')
 
-            describe('base class', function() {
-                var Provider = require('./helpers/map/baseProvider');
+      describe('instantion without connection in config', function () {
+        it('should throw a ConfigurationError during initialization', function () {
+          expect(function () {
+            var provider = new Provider({name: 'test'})
+            provider.initialize()
+          }).toThrowError(errors.ConfigurationError)
+        })
+      })
 
-                describe('instantion without connection in config', function() {
-                    it('should throw a ConfigurationError during initialization', function() {
-                        expect(function() {
-                            var provider = new Provider({name: 'test'});
-                            provider.initialize();
-                        }).toThrowError(errors.ConfigurationError);
-                    });
-                });
+      describe('geocode method calling', function () {
+        it('should throw a NotImplementedError', function () {
+          var base = new Provider({name: 'test', connection: 'map'})
 
-                describe('geocode method calling', function() {
-                    it('should throw a NotImplementedError', function() {
-                        var base = new Provider({name: 'test', connection: 'map'});
+          expect(function () {
+            base.geocode('test')
+          }).toThrowError(errors.NotImplementedError)
+        })
+      })
+    })
+  })
 
-                        expect(function() {
-                            base.geocode('test');
-                        }).toThrowError(errors.NotImplementedError);
-                    });
-                });
-            });
-        });
-
-        describe('default configuration provider loading', function() {
-            it('should succeed', function() {
-                var logger = require('./helpers/logger').getInstance();
-                expect(logger instanceof require('./helpers/logger/defaultProvider')).toBe(true);
-                expect(logger.log('test')).toBe('test');
-            });
-        });
-
-    });
-
-} (require, describe, it, expect));
+  describe('default configuration provider loading', function () {
+    it('should succeed', function () {
+      var logger = require('./helpers/logger').getInstance()
+      expect(logger instanceof require('./helpers/logger/defaultProvider')).toBe(true)
+      expect(logger.log('test')).toBe('test')
+    })
+  })
+})

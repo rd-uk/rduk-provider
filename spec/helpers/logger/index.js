@@ -22,16 +22,16 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
 var map = require('../../../lib/factory')('logger', require('./baseProvider'), {
-    default: 'default',
-    providers: [
-        {
-            name: 'default',
-            type: '~/spec/helpers/logger/defaultProvider'
-        }
-    ]
-});
+  default: 'default',
+  providers: [
+    {
+      name: 'default',
+      type: '~/spec/helpers/logger/defaultProvider'
+    }
+  ]
+})
 
-module.exports = map;
+module.exports = map

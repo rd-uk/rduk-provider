@@ -22,28 +22,23 @@
  * SOFTWARE.
  */
 
-'use strict';
+'use strict'
 
-var base = require('../../../lib/base');
-var configuration = require('@rduk/configuration');
-var errors = require('@rduk/errors');
+const Base = require('../../../lib/base')
+const configuration = require('@rduk/configuration')
+const errors = require('@rduk/errors')
 
-var MapBaseProvider = function MapBaseProvider(config) {
-    MapBaseProvider.super_.call(this, config);
-};
-
-require('util').inherits(MapBaseProvider, base);
-
-MapBaseProvider.prototype.initialize = function() {
+class MapBaseProvider extends Base {
+  initialize () {
     if (!this.config.hasOwnProperty('connection')) {
-        errors.throwConfigurationError('connection property not found.');
+      errors.throwConfigurationError('connection property not found.')
     }
 
-    this.token = configuration.load().connections.get(this.config.connection).token;
-};
+    this.token = configuration.load().connections.get(this.config.connection).token
+  }
+  geocode (address) {
+    errors.throwNotImplementedError('geocode')
+  }
+}
 
-MapBaseProvider.prototype.geocode = function(address) {
-    errors.throwNotImplementedError('geocode');
-};
-
-module.exports = MapBaseProvider;
+module.exports = MapBaseProvider

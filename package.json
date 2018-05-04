@@ -1,6 +1,6 @@
 {
   "name": "@rduk/provider",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Easily add providers to your Node.js app",
   "engines": {
     "node": ">=6.4.0"
@@ -27,6 +27,8 @@
   },
   "homepage": "https://github.com/rd-uk/rduk-provider#readme",
   "devDependencies": {
+    "@rduk/configuration": "2.x",
+    "@rduk/errors": "1.x",
     "coveralls": "3.0.0",
     "istanbul": "0.4.5",
     "jasmine": "3.1.0",
@@ -36,7 +38,7 @@
     "lodash": "4.17.5"
   },
   "peerDependencies": {
-    "@rduk/configuration": "~2.0",
-    "@rduk/errors": "~1.0"
+    "@rduk/configuration": "2.x",
+    "@rduk/errors": "1.x"
   }
 }

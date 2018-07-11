@@ -1,6 +1,6 @@
 {
   "name": "@rduk/provider",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "description": "Easily add providers to your Node.js app",
   "engines": {
     "node": ">=6.4.0"
@@ -9,8 +9,9 @@
   "scripts": {
     "pretest": "standard --fix && cp ./spec/resources/config*.yml .",
     "test": "istanbul cover node_modules/jasmine/bin/jasmine.js --report cobertura",
-    "posttest": "rm -rf ./config*yml && istanbul report",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "posttest": "rm -rf ./config*yml",
+    "report": "istanbul report",
+    "coveralls": "npm run report && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",

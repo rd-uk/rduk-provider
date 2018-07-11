@@ -28,15 +28,12 @@
   },
   "homepage": "https://github.com/rd-uk/rduk-provider#readme",
   "devDependencies": {
-    "@rduk/configuration": "2.x",
-    "@rduk/errors": "1.x",
+    "@rduk/configuration": "^2.2.2",
+    "@rduk/errors": "^1.3.1",
     "coveralls": "3.0.1",
     "istanbul": "0.4.5",
     "jasmine": "3.1.0",
     "standard": "11.0.1"
-  },
-  "dependencies": {
-    "lodash": "4.17.9"
   },
   "peerDependencies": {
     "@rduk/configuration": "2.x",
